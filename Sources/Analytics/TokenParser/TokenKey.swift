@@ -10,6 +10,6 @@ enum TokenKey { // Assuming this is code gen from excel or something like that
     case click, tap, scroll
 }
 
-enum Payload: String {
-    case time, user
+enum Payload {
+    case time(String), user(String)
 }

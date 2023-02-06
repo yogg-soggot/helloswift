@@ -6,7 +6,7 @@ import Foundation
 
 struct Analytics {
     static var api: ExternalApi? = nil
-    public static func token(key: TokenKey) -> TokenProvider {
+    public static func provider(key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(key)")
     }
 }
@@ -19,4 +19,10 @@ extension String {
             print("Initialize api first")
         }
     }
+}
+
+prefix operator <|
+
+prefix func <|(key: TokenKey) -> TokenProvider {
+    Analytics.provider(key: key)
 }
