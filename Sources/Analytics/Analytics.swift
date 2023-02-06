@@ -1,8 +1,6 @@
 @main
 public struct Analytics {
-    public private(set) var text = "Hello, World!"
-
     public static func main() {
-        print(Analytics().text)
+        ConsoleMockApi().event(token: "token1", payload: [EventPayload(param: "param", value: "value")]);
     }
 }
