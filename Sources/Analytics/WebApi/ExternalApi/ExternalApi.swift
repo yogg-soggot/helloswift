@@ -5,7 +5,7 @@
 import Foundation
 
 protocol ExternalApi {
-    func event(token: String, payload: Array<EventPayload>) -> Void
+    func event(token: String, payload: Array<EventPayload>)
 }
 
 struct EventPayload {
