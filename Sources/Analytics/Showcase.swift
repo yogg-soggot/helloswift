@@ -16,3 +16,21 @@ public struct Showcase {
         }
     }
 }
+
+/**
+ *
+ * Kotlin implementation
+ * track {
+ *    token { provider[ONBOARDING][IMAGE][BUTTON](CLICK) }
+ *    payload {
+ *        TIME payload "22:00"
+ *    }
+ * }
+ *
+ * Kotlin implementation with Context Receivers (experimental)
+ * track {
+ *    token[ONBOARDING][IMAGE][BUTTON](CLICK)
+ *    TIME payload "22:00"
+ * }
+ *
+ **/
