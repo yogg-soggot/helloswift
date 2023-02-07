@@ -20,6 +20,6 @@ class ConcatTokenProvider : TokenProvider { // Most simple implementation. This 
     }
 
     func token(_ key: TokenKey) -> String {
-        currentToken + " \(key)"
+        currentToken + "_\(key)"
     }
 }
