@@ -13,7 +13,7 @@ class ConcatTokenProvider : TokenProvider { // Most simple implementation. This 
     init(currentToken: String?) {
         self.currentToken = currentToken ?? ""
     }
-    let currentToken: String
+    private let currentToken: String
 
     func next(key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(currentToken)_\(key)")
