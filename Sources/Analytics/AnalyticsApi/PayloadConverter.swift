@@ -9,4 +9,3 @@ infix operator =>
 func =>(lhs: Payload, rhs: String) -> EventPayload {
     EventPayload(param: "\(lhs)", value: rhs)
 }
-

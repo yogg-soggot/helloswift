@@ -46,4 +46,3 @@ func trackWithLog(token: String, payload: [EventPayload]) {
         print("Initialize api first")
     }
 }
-
