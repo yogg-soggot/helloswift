@@ -23,19 +23,3 @@ class ConcatTokenProvider : TokenProvider { // Most simple implementation. This 
         currentToken + " \(key)"
     }
 }
-
-precedencegroup AnalyticsPrecedence {
-    lowerThan: AdditionPrecedence
-    associativity: left
-}
-
-infix operator |: AnalyticsPrecedence
-infix operator |>: AnalyticsPrecedence
-
-func |(lhs: TokenProvider, rhs: TokenKey) -> TokenProvider {
-    lhs.next(rhs)
-}
-
-func |>(lhs: TokenProvider, rhs: TokenKey) -> String {
-    lhs.token(rhs)
-}

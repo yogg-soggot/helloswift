@@ -4,14 +4,16 @@ public struct Showcase {
         Analytics.api = ConsoleMockApi()
         Analytics
                 .provider(.onboarding)
+                .next(.image)
                 .next(.button)
                 .token(.click)
                 .payload(.time, "22:00")
                 .payload(.user, "admin")
-                .track()
+                .send()
 
-        let token = <|.onboarding | .button |> .click
-        _ = [.time => "22.22", .user => "Nikita"]
-        token.track()
+        track(<|.onboarding | .image | .button |> .click)
+        track(<|.onboarding | .button |> .click) {
+            [.time => "22.22", .user => "Nikita"]
+        }
     }
 }

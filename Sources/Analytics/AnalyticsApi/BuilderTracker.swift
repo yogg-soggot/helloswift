@@ -24,7 +24,7 @@ class PayloadTracker {
         payload.insert(pl, at: payload.count)
         return PayloadTracker(tokenKey: tokenKey, payload: payload)
     }
-    func track() {
+    func send() {
         trackWithLog(token: tokenKey, payload: payload)
     }
 }
@@ -41,13 +41,8 @@ extension String {
     func payload(_ key: Payload, _ value: String) -> PayloadTracker {
         PayloadTracker(tokenKey: self, payload: [EventPayload(param: "\(key)", value: value)])
     }
-    func track() {
+    func send() {
         trackWithLog(token: self, payload: [])
     }
 }
 
-prefix operator <|
-
-prefix func <|(key: TokenKey) -> TokenProvider {
-    Analytics.provider(key)
-}
