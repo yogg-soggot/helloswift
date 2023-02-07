@@ -5,8 +5,8 @@
 import Foundation
 
 protocol TokenProvider {
-    func next(key: TokenKey) -> TokenProvider
-    func token(key: TokenKey) -> String
+    func next(_ key: TokenKey) -> TokenProvider
+    func token(_ key: TokenKey) -> String
 }
 
 class ConcatTokenProvider : TokenProvider { // Most simple implementation. This thing can parse JSON for instance
@@ -15,11 +15,11 @@ class ConcatTokenProvider : TokenProvider { // Most simple implementation. This 
     }
     private let currentToken: String
 
-    func next(key: TokenKey) -> TokenProvider {
+    func next(_ key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(currentToken)_\(key)")
     }
 
-    func token(key: TokenKey) -> String {
+    func token(_ key: TokenKey) -> String {
         currentToken + " \(key)"
     }
 }
@@ -33,9 +33,9 @@ infix operator |: AnalyticsPrecedence
 infix operator |>: AnalyticsPrecedence
 
 func |(lhs: TokenProvider, rhs: TokenKey) -> TokenProvider {
-    lhs.next(key: rhs)
+    lhs.next(rhs)
 }
 
 func |>(lhs: TokenProvider, rhs: TokenKey) -> String {
-    lhs.token(key: rhs)
+    lhs.token(rhs)
 }

@@ -3,11 +3,11 @@ public struct Showcase {
     public static func main() {
         Analytics.api = ConsoleMockApi()
         Analytics
-                .provider(key: .onboarding)
-                .next(key: .button)
-                .token(key: .click)
-                .payload(key: .time, value: "22:00")
-                .payload(key: .user, value: "admin")
+                .provider(.onboarding)
+                .next(.button)
+                .token(.click)
+                .payload(.time, "22:00")
+                .payload(.user, "admin")
                 .track()
 
         let token = <|.onboarding | .button |> .click

@@ -6,7 +6,7 @@ import Foundation
 
 struct Analytics {
     static var api: ExternalApi? = nil
-    public static func provider(key: TokenKey) -> TokenProvider {
+    public static func provider(_ key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(key)")
     }
 }
@@ -19,7 +19,7 @@ class PayloadTracker {
     private let tokenKey: String
     private var payload: [EventPayload]
 
-    func payload(key: Payload, value: String) -> PayloadTracker {
+    func payload(_ key: Payload, _ value: String) -> PayloadTracker {
         let pl = EventPayload(param: "\(key)", value: value)
         payload.insert(pl, at: payload.count)
         return PayloadTracker(tokenKey: tokenKey, payload: payload)
@@ -38,7 +38,7 @@ func trackWithLog(token: String, payload: [EventPayload]) {
 }
 
 extension String {
-    func payload(key: Payload, value: String) -> PayloadTracker {
+    func payload(_ key: Payload, _ value: String) -> PayloadTracker {
         PayloadTracker(tokenKey: self, payload: [EventPayload(param: "\(key)", value: value)])
     }
     func track() {
@@ -49,5 +49,5 @@ extension String {
 prefix operator <|
 
 prefix func <|(key: TokenKey) -> TokenProvider {
-    Analytics.provider(key: key)
+    Analytics.provider(key)
 }
