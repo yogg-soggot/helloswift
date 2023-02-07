@@ -11,5 +11,5 @@ enum TokenKey { // Assuming this is code gen from excel or something like that
 }
 
 enum Payload {
-    case time(String), user(String)
+    case time, user
 }

@@ -9,6 +9,7 @@ public struct Showcase {
                 .track()
 
         let token = <|.onboarding | .button |> .click
+        _ = [.time => "22.22", .user => "Nikita"]
         token.track()
     }
 }
