@@ -9,7 +9,7 @@ struct Analytics {
     public static func provider(_ key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(key)")
     }
-    public static func token(_ key: TokenKey) { "\(key)" }
+    public static func token(_ key: TokenKey) -> String { "\(key)" }
 }
 
 class PayloadTracker {
@@ -30,20 +30,20 @@ class PayloadTracker {
     }
 }
 
-func trackWithLog(token: String, payload: [EventPayload]) {
-    if let api = Analytics.api {
-        api.event(token: token, payload: payload)
-    } else {
-        print("Initialize api first")
-    }
-}
-
 extension String {
     func payload(_ key: Payload, _ value: String) -> PayloadTracker {
         PayloadTracker(tokenKey: self, payload: [EventPayload(param: "\(key)", value: value)])
     }
     func send() {
         trackWithLog(token: self, payload: [])
+    }
+}
+
+func trackWithLog(token: String, payload: [EventPayload]) {
+    if let api = Analytics.api {
+        api.event(token: token, payload: payload)
+    } else {
+        print("Initialize api first")
     }
 }
 

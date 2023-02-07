@@ -11,10 +11,6 @@ public struct Showcase {
                 .payload(.user, "admin")
                 .send()
 
-        track(<|.onboarding | .image | .button |> .click)
-        track(<|.onboarding | .button |> .click) {
-            [.time => "22.22", .user => "Nikita"]
-        }
         track(.onboarding, .button, .click) {
             [.time => "22.22", .user => "Nikita"]
         }
