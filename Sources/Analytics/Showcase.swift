@@ -15,5 +15,8 @@ public struct Showcase {
         track(<|.onboarding | .button |> .click) {
             [.time => "22.22", .user => "Nikita"]
         }
+        track(.onboarding, .button, .click) {
+            [.time => "22.22", .user => "Nikita"]
+        }
     }
 }

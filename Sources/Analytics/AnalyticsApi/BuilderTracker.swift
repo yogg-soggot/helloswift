@@ -9,6 +9,7 @@ struct Analytics {
     public static func provider(_ key: TokenKey) -> TokenProvider {
         ConcatTokenProvider(currentToken: "\(key)")
     }
+    public static func token(_ key: TokenKey) { "\(key)" }
 }
 
 class PayloadTracker {
